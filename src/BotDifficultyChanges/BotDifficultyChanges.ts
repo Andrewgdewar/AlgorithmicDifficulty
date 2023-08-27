@@ -2,7 +2,7 @@ import { cloneDeep } from './../utils';
 import { BotGenerationCacheService } from '@spt-aki/services/BotGenerationCacheService';
 import { StaticRouterModService } from "@spt-aki/services/mod/staticRouter/StaticRouterModService";
 import { DependencyContainer } from 'tsyringe';
-import mainConfig from "../../config/config.json"
+import config from "../../config/config.json"
 import BotGen from './BotGen';
 import { globalValues } from './GlobalValues';
 import { DatabaseServer } from '@spt-aki/servers/DatabaseServer';
@@ -29,7 +29,7 @@ export const BotRoutersAndGen = (
     globalValues.Logger = container.resolve("WinstonLogger")
     globalValues.botGenerationCacheService = container.resolve<BotGenerationCacheService>("BotGenerationCacheService")
     // container.resolve<TimeAndWeatherSettings>("WeatherController")
-    globalValues.config = mainConfig
+    globalValues.config = config
 
     container.afterResolution("BotGenerationCacheService", (_t, result: BotGenerationCacheService) => {
         // globalValues.Logger.info(`POOP: BotGenerationCacheService calling LegendaryPlayer.getBot`);
@@ -39,7 +39,7 @@ export const BotRoutersAndGen = (
     difficultyConfig.debug && console.log("Algorthimic Difficulty:  BotGenerationCacheService Registered")
 
     //Raid start
-    staticRouterModService.registerStaticRouter(`StaticAkiGameStartAlgorithmicLevelProgression`, [{
+    staticRouterModService.registerStaticRouter(`StaticAkiGameStartAlgorithmicDifficulty`, [{
         url: "/client/raid/configuration",
         action: (url, info, sessionId, output) => {
             globalValues.RaidStartTime = Date.now()

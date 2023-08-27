@@ -31,7 +31,7 @@ const BotRoutersAndGen = (container) => {
     }, { frequency: "Always" });
     difficulty_json_1.default.debug && console.log("Algorthimic Difficulty:  BotGenerationCacheService Registered");
     //Raid start
-    staticRouterModService.registerStaticRouter(`StaticAkiGameStartAlgorithmicLevelProgression`, [{
+    staticRouterModService.registerStaticRouter(`StaticAkiGameStartAlgorithmicDifficulty`, [{
             url: "/client/raid/configuration",
             action: (url, info, sessionId, output) => {
                 GlobalValues_1.globalValues.RaidStartTime = Date.now();

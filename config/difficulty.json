@@ -38,6 +38,7 @@
             "bossknight"
         ]
     },
+    "DO NOT TOUCH THE ABOVE, THIS IS NOT POOP": "NO SUPPORT WILL BE GIVEN",
     "overallDifficultyModifier": 1,
     "lowLevelDifficultyModifier": 0,
     "midLevelDifficultyModifier": 0,
@@ -65,6 +66,7 @@
             "seperatethemwithcommas"
         ]
     },
+    "randomScavBrainChance": 0.2,
     "groupDistance": 150,
     "levelMax": 60,
     "debug": true

@@ -49,6 +49,14 @@ export default class BotGen {
                 switch (true) {
                     // Scav
                     case BotGen.assaultTypes.includes(key.toLowerCase()):
+                        const chance = globalValues.difficultyConfig.randomScavBrainChance > Math.random()
+                        if (chance) {
+                            const botsForRandom = globalValues.difficultyConfig.bots.midLevelAIs
+                            const randomChoice = botsForRandom[Math.floor(Math.random() * botsForRandom.length)];
+                            cachedOfType[cachedOfType.length - 1].Info.Settings.Role = randomChoice
+                            globalValues.Logger.warning(`\nRandom Scav Brain Chosen Creating Scav from ${key} with ${randomChoice}`);
+                            break;
+                        }
                         const selectedMap = globalValues.database.locations[globalValues.RaidMap]?.base
                         const raidEndTime = globalValues.RaidStartTime + (selectedMap.EscapeTimeLimit * 60000)
                         const timeProgressed = Date.now() - globalValues.RaidStartTime

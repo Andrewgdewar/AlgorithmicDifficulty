@@ -1,5 +1,5 @@
 
-# **Dushaoan's AlgorithmicLevelProgression**
+# **Dushaoan's AlgorithmicDifficulty**
 
 === INSTALL STEPS ===
 
@@ -18,7 +18,7 @@ Example order.json with recommended mods:
 "zPOOP",
 "Lua-CustomSpawnPoints",
 "Dushaoan-XXXX-1.x.x",
-"Dushaoan-AlgorithmicLevelProgression-1.x.x"
+"Dushaoan-AlgorithmicDifficulty-1.x.x"
 ]
 }
 
