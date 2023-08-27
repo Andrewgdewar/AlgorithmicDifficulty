@@ -1,0 +1,63 @@
+{
+    "enableProgressionChanges": true,
+    "enableLevelChanges": true,
+    "enableDifficultyChanges": true,
+    "leveledClothing": true,
+    "questUnlockedItemsShifted": true,
+    "tradedItemsShifted": true,
+    "addCustomTraderItems": false,
+    "addAllKeysToLootList": true,
+    "customTradersToExclude": [
+        "insertTheTraderNameToIgnoreTheirItems"
+    ],
+    "customBlacklist": [
+        "get id's from here https://db.sp-tarkov.com/search/",
+        "5example3208of34not8f83real8a1id"
+    ],
+    "levelRange": {
+        "1": {
+            "min": 1,
+            "max": 14
+        },
+        "2": {
+            "min": 15,
+            "max": 24
+        },
+        "3": {
+            "min": 25,
+            "max": 39
+        },
+        "4": {
+            "min": 40,
+            "max": 100
+        }
+    },
+    "botRangeAtLevel": {
+        "1": [
+            10,
+            5,
+            2,
+            1
+        ],
+        "2": [
+            10,
+            13,
+            7,
+            4
+        ],
+        "3": [
+            8,
+            10,
+            11,
+            4
+        ],
+        "4": [
+            8,
+            10,
+            10,
+            7
+        ]
+    },
+    "equipmentRandomness": 20,
+    "debug": false
+}

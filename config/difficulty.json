@@ -1,0 +1,71 @@
+{
+    "bots": {
+        "lowLevelAIs": [
+            "assault",
+            "marksman"
+        ],
+        "midLevelAIs": [
+            "cursedassault",
+            "sectantpriest",
+            "sectantwarrior",
+            "pmcbot",
+            "followergluharassault",
+            "followergluharscout",
+            "followergluharsecurity",
+            "followergluharsnipe",
+            "followerkojaniy",
+            "followersanitar",
+            "followerbully",
+            "followertagilla",
+            "followerbirdeye",
+            "followerbigpipe",
+            "followerzryachiy",
+            "arenafighterevent"
+        ],
+        "highLevelAIs": [
+            "assaultgroup",
+            "bear",
+            "usec",
+            "exusec"
+        ],
+        "bossLevelAIs": [
+            "bossbully",
+            "bossgluhar",
+            "bosskilla",
+            "bosskojaniy",
+            "bosssanitar",
+            "bosstagilla",
+            "bossknight"
+        ]
+    },
+    "overallDifficultyModifier": 1,
+    "lowLevelDifficultyModifier": 0,
+    "midLevelDifficultyModifier": 0,
+    "highLevelDifficultyModifier": 0,
+    "overallDifficultyMultipliers": {
+        "aiAimSpeedMult": 1.2,
+        "aiShotSpreadMult": 1,
+        "aiVisionSpeedMult": 1.3,
+        "aiAccuracyMult": 1.3,
+        "sniperBotAccuracyMult": 1,
+        "visibleDistanceMult": 0.8,
+        "semiAutoFireRateMult": 1,
+        "aiRecoilMult": 1.1,
+        "aiHearingMult": 0.3,
+        "visibleAngleMult": 1,
+        "visibleAngleMax": 240,
+        "grenadePrecisionMult": 1,
+        "grenadeThrowRangeMax": 20,
+        "grenadeThrowRangeMult": 1,
+        "allowAimAtHead": false,
+        "allowGrenades": true,
+        "changeHeadHPValues": false,
+        "setTheseBotsToDefaultPlayerHPBeforeMultsAreUsed": [
+            "botnameshere",
+            "seperatethemwithcommas"
+        ]
+    },
+    "groupDistance": 150,
+    "levelMax": 60,
+    "debug": true
+}
