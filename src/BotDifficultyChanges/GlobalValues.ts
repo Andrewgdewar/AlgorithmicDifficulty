@@ -2,6 +2,8 @@ import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { IBotBase } from "@spt-aki/models/eft/common/tables/IBotBase";
 import { BotGenerationCacheService } from "@spt-aki/services/BotGenerationCacheService"
 import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
+import config from "../../config/config.json"
+import difficultyConfig from "../../config/difficulty.json"
 
 export type Role = {
     Role: string;
@@ -11,13 +13,15 @@ export class globalValues {
     public static Logger: ILogger;
     public static database: IDatabaseTables;
     public static baseAI: IBotBase;
-    public static config: any;
-    public static difficultyConfig: any;
+    public static config = config
+    public static difficultyConfig = difficultyConfig
     public static botGenerationCacheService: BotGenerationCacheService;
     public static RaidStartTime: number
     public static RaidMap: "bigmap" | "develop" | "factory4_day" | "factory4_night" | "hideout" | "interchange" | "laboratory" | "lighthouse" | "privatearea" | "rezervbase" | "shoreline" | "suburbs" | "tarkovstreets" | "terminal" | "town" | "woods"
 
-
+    public static scavAlternates = [...difficultyConfig.bots.midLevelAIs, ...difficultyConfig.bots.highLevelAIs]
+    public static pmcAlternates = [...difficultyConfig.bots.highLevelAIs, ...difficultyConfig.bots.bossLevelAIs]
+    public static marksmanAlternates = ["followergluharsnipe", "followerbirdeye", "bosskojaniy"]
     public static assaultRoleList: Role[] = [
         {
             Role: "assault",
@@ -67,7 +71,7 @@ export class globalValues {
             BotDifficulty: "hard"
         },
         {
-            Role: "bear",
+            Role: "sptbear",
             BotDifficulty: "easy"
         },
         {
@@ -75,15 +79,15 @@ export class globalValues {
             BotDifficulty: "impossible"
         },
         {
-            Role: "bear",
+            Role: "sptbear",
             BotDifficulty: "normal"
         },
         {
-            Role: "bear",
+            Role: "sptbear",
             BotDifficulty: "hard"
         },
         {
-            Role: "bear",
+            Role: "sptbear",
             BotDifficulty: "impossible"
         }
     ]
@@ -102,7 +106,7 @@ export class globalValues {
             BotDifficulty: "hard"
         },
         {
-            Role: "usec",
+            Role: "sptusec",
             BotDifficulty: "easy"
         },
         {
@@ -110,15 +114,15 @@ export class globalValues {
             BotDifficulty: "impossible"
         },
         {
-            Role: "usec",
+            Role: "sptusec",
             BotDifficulty: "normal"
         },
         {
-            Role: "usec",
+            Role: "sptusec",
             BotDifficulty: "hard"
         },
         {
-            Role: "usec",
+            Role: "sptusec",
             BotDifficulty: "impossible"
         }
     ]
@@ -147,8 +151,8 @@ export class globalValues {
         "followersanitar": "followerSanitar",
         "followertagilla": "followerTagilla",
         "cursedassault": "cursedAssault",
-        "usec": "usec",
-        "bear": "bear",
+        "usec": "sptusec",
+        "bear": "sptbear",
         "bosstest": "bossTest",
         "followertest": "followerTest",
         "gifter": "gifter",
@@ -159,5 +163,4 @@ export class globalValues {
         "bosszryachiy": "bossZryachiy",
         "followerzryachiy": "followerZryachiy"
     }
-
 }

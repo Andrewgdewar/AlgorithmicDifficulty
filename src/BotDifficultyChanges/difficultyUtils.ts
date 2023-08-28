@@ -13,6 +13,28 @@ export const makeDifficultyChanges = () => {
     // Fixes assaultGroup type?
     globalValues.database.bots.types.assaultgroup = cloneDeep(globalValues.database.bots.types.pmcbot)
     generateDifficultyLevels()
+
+    if (globalValues.config.preventPMCChatter) {
+        // The below is a code snippet pulled almost straight from the wicked modder PreyToLive
+        const botDifficulty = [
+            "easy",
+            "normal",
+            "hard",
+            "impossible"
+        ];
+
+        botDifficulty.forEach(difficulty => {
+            globalValues.database.bots.types.bear.difficulty[difficulty].Mind.CAN_TALK = false;
+            globalValues.database.bots.types.bear.difficulty[difficulty].Mind.CAN_THROW_REQUESTS = false;
+            globalValues.database.bots.types.bear.difficulty[difficulty].Mind.TALK_WITH_QUERY = false;
+            globalValues.database.bots.types.pmcbot.difficulty[difficulty].Mind.CAN_TALK = false;
+            globalValues.database.bots.types.pmcbot.difficulty[difficulty].Mind.CAN_THROW_REQUESTS = false;
+            globalValues.database.bots.types.pmcbot.difficulty[difficulty].Mind.TALK_WITH_QUERY = false;
+            globalValues.database.bots.types.usec.difficulty[difficulty].Mind.CAN_TALK = false;
+            globalValues.database.bots.types.usec.difficulty[difficulty].Mind.CAN_THROW_REQUESTS = false;
+            globalValues.database.bots.types.usec.difficulty[difficulty].Mind.TALK_WITH_QUERY = false;
+        });
+    }
 }
 
 const generateDifficultyLevels = () => {
@@ -24,13 +46,13 @@ const generateDifficultyLevels = () => {
 
         switch (aiTypes) {
             case "lowLevelAIs":
-                difficultySet = [2, 2.5, 3, 3.5]; difficultyModifier = lowLevelDifficultyModifier
+                difficultySet = [3, 3.33, 3.66, 4]; difficultyModifier = lowLevelDifficultyModifier
                 break;
             case "midLevelAIs":
-                difficultySet = [3, 3.5, 4, 4.5]; difficultyModifier = midLevelDifficultyModifier
+                difficultySet = [3.66, 4, 4.33, 4.66]; difficultyModifier = midLevelDifficultyModifier
                 break;
             case "highLevelAIs":
-                difficultySet = [4, 4.5, 5, 5.5]; difficultyModifier = highLevelDifficultyModifier
+                difficultySet = [4.33, 4.66, 5, 5.33]; difficultyModifier = highLevelDifficultyModifier
                 break;
             case "bossLevelAIs":
                 difficultySet = [5, 5.5, 6, 6.5]; difficultyModifier = Math.max(lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier)
@@ -50,7 +72,7 @@ const generateDifficultyLevels = () => {
 
 const changeForAllDifficulties = (currentBottDifficulty: Difficulties, difficultySet: number[], difficultyModifier: number) => {
     for (let i in difficultySet)
-        difficultySet[i] = (difficultySet[i] * 1) + difficultyModifier + globalValues.difficultyConfig.overallDifficultyModifier
+        difficultySet[i] = (difficultySet[i] * 1) + difficultyModifier + globalValues.config.overallDifficultyModifier
 
     //Cycle through all four difficulties for the given bot type
     changeAI(currentBottDifficulty["easy"], difficultySet[0])
@@ -138,7 +160,7 @@ export const changeCoreAI = () => {
     // 300 is a super high default for that, though.
     // 300m is ~1.5 times the length of the construction site on Customs. Test this.
     // console.log(core.DIST_NOT_TO_GROUP)
-    core.DIST_NOT_TO_GROUP = globalValues.difficultyConfig.groupDistance
+    core.DIST_NOT_TO_GROUP = globalValues.difficultyConfig.botGroupDistance
     //Automatically square it, because math is hard.
     core.DIST_NOT_TO_GROUP_SQR = core.DIST_NOT_TO_GROUP * core.DIST_NOT_TO_GROUP
 }

@@ -17,43 +17,79 @@ class BotGen {
         // globalValues.Logger.warning(`requested bot type ${key} from cache`);
         if (GlobalValues_1.globalValues.botGenerationCacheService.storedBots.has(key)) {
             const cachedOfType = GlobalValues_1.globalValues.botGenerationCacheService.storedBots.get(key);
-            const level = cachedOfType[cachedOfType.length - 1].Info.Level;
             if (cachedOfType.length > 0) {
+                const cachedBot = cachedOfType[cachedOfType.length - 1];
+                const level = cachedBot.Info.Level;
                 switch (true) {
                     // Scav
                     case BotGen.assaultTypes.includes(key.toLowerCase()):
+                        const randomScav = GlobalValues_1.globalValues.config.randomScavBrainChance > Math.random();
+                        if (randomScav) {
+                            const botsForRandom = GlobalValues_1.globalValues.scavAlternates;
+                            const randomChoice = botsForRandom[Math.floor(Math.random() * botsForRandom.length)];
+                            cachedBot.Info.Settings.Role = GlobalValues_1.globalValues.roleCase[randomChoice];
+                            GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nRANDOM: Creating Scav from ${key} with ${randomChoice} ${cachedBot.Info.Side}`);
+                            break;
+                        }
                         const selectedMap = GlobalValues_1.globalValues.database.locations[GlobalValues_1.globalValues.RaidMap]?.base;
                         const raidEndTime = GlobalValues_1.globalValues.RaidStartTime + (selectedMap.EscapeTimeLimit * 60000);
                         const timeProgressed = Date.now() - GlobalValues_1.globalValues.RaidStartTime;
                         const raidTotalDuration = raidEndTime - GlobalValues_1.globalValues.RaidStartTime;
                         const currentlyProgressedPercentage = ((timeProgressed) / (raidTotalDuration)) * 100;
-                        // globalValues.Logger.warning(`Time elapsed ${Math.round((timeProgressed) / 60000)} of ${selectedMap.EscapeTimeLimit} minutes or ${Math.round(currentlyProgressedPercentage)}%`);
                         const chosenAssault = BotGen.getRandom(GlobalValues_1.globalValues.assaultRoleList, timeProgressed, raidTotalDuration);
                         if (chosenAssault) {
-                            cachedOfType[cachedOfType.length - 1].Info.Settings.BotDifficulty = chosenAssault.BotDifficulty;
-                            cachedOfType[cachedOfType.length - 1].Info.Settings.Role = chosenAssault.Role;
-                            GlobalValues_1.globalValues.Logger.warning(`\nCreating Scav from ${key}:${currentlyProgressedPercentage}% ${chosenAssault.Role} ${chosenAssault.BotDifficulty}`);
+                            cachedBot.Info.Settings.BotDifficulty = chosenAssault.BotDifficulty;
+                            cachedBot.Info.Settings.Role = chosenAssault.Role;
+                            GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nCreating Scav from ${key}:${currentlyProgressedPercentage}% ${chosenAssault.Role} ${chosenAssault.BotDifficulty} ${cachedBot.Info.Side}`);
                         }
                         break;
                     case BotGen.bearTypes.includes(key.toLowerCase()):
-                        const chosenBear = BotGen.getRandom(GlobalValues_1.globalValues.bearRoleList, level, GlobalValues_1.globalValues.difficultyConfig.levelMax);
-                        if (cachedOfType[cachedOfType.length - 1].Info.Settings.BotDifficulty)
-                            if (chosenBear) {
-                                cachedOfType[cachedOfType.length - 1].Info.Settings.BotDifficulty = chosenBear.BotDifficulty;
-                                cachedOfType[cachedOfType.length - 1].Info.Settings.Role = chosenBear.Role;
-                                GlobalValues_1.globalValues.Logger.warning(`\nCreating bear from ${key}: level ${level} ${chosenBear.Role} ${chosenBear.BotDifficulty}`);
-                            }
+                        const chosenBear = BotGen.getRandom(GlobalValues_1.globalValues.bearRoleList, level, GlobalValues_1.globalValues.difficultyConfig.pmcDifficultyMaxLevel);
+                        const randomBear = GlobalValues_1.globalValues.config.randomPmcBrainChance > Math.random();
+                        if (randomBear && chosenBear) {
+                            const botsForRandom = GlobalValues_1.globalValues.pmcAlternates;
+                            const randomChoice = botsForRandom[Math.floor(Math.random() * botsForRandom.length)];
+                            cachedBot.Info.Settings.BotDifficulty = chosenBear.BotDifficulty;
+                            cachedBot.Info.Settings.Role = GlobalValues_1.globalValues.roleCase[randomChoice];
+                            GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nRANDOM: Creating bear from ${key}: ${level} with ${randomChoice} ${cachedBot.Info.Side}`);
+                            break;
+                        }
+                        if (chosenBear) {
+                            cachedBot.Info.Settings.BotDifficulty = chosenBear.BotDifficulty;
+                            cachedBot.Info.Settings.Role = chosenBear.Role;
+                            GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nCreating bear from ${key}: ${level} ${chosenBear.Role} ${chosenBear.BotDifficulty} ${cachedBot.Info.Side}`);
+                        }
                         break;
                     case BotGen.usecTypes.includes(key.toLowerCase()):
-                        const chosenUsec = BotGen.getRandom(GlobalValues_1.globalValues.usecRoleList, level, GlobalValues_1.globalValues.difficultyConfig.levelMax);
+                        const chosenUsec = BotGen.getRandom(GlobalValues_1.globalValues.usecRoleList, level, GlobalValues_1.globalValues.difficultyConfig.pmcDifficultyMaxLevel);
+                        const randomUsec = GlobalValues_1.globalValues.config.randomPmcBrainChance > Math.random();
+                        if (randomUsec && chosenUsec) {
+                            const botsForRandom = GlobalValues_1.globalValues.pmcAlternates;
+                            const randomChoice = botsForRandom[Math.floor(Math.random() * botsForRandom.length)];
+                            cachedBot.Info.Settings.BotDifficulty = chosenUsec.BotDifficulty;
+                            cachedBot.Info.Settings.Role = GlobalValues_1.globalValues.roleCase[randomChoice];
+                            GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nRANDOM: Creating usec from ${key}: ${level} with ${randomChoice} ${cachedBot.Info.Side}`);
+                            break;
+                        }
                         if (chosenUsec) {
-                            cachedOfType[cachedOfType.length - 1].Info.Settings.BotDifficulty = chosenUsec.BotDifficulty;
-                            cachedOfType[cachedOfType.length - 1].Info.Settings.Role = chosenUsec.Role;
-                            GlobalValues_1.globalValues.Logger.warning(`\nCreating usec from ${key}:${level} ${chosenUsec.Role} ${chosenUsec.BotDifficulty}`);
+                            cachedBot.Info.Settings.BotDifficulty = chosenUsec.BotDifficulty;
+                            cachedBot.Info.Settings.Role = chosenUsec.Role;
+                            GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nCreating usec from ${key}: ${level} ${chosenUsec.Role} ${chosenUsec.BotDifficulty} ${cachedBot.Info.Side}`);
+                        }
+                        break;
+                    case BotGen.marksmanTypes.includes(key.toLowerCase()):
+                        const randomMarksman = GlobalValues_1.globalValues.config.randomMarksmanBrainChance > Math.random();
+                        if (randomMarksman) {
+                            const botsForRandom = GlobalValues_1.globalValues.marksmanAlternates;
+                            const randomChoice = botsForRandom[Math.floor(Math.random() * botsForRandom.length)];
+                            cachedBot.Info.Settings.BotDifficulty = "hard";
+                            cachedBot.Info.Settings.Role = GlobalValues_1.globalValues.roleCase[randomChoice];
+                            GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nRANDOM: Creating marksman from ${key} with ${randomChoice} ${cachedBot.Info.Side}`);
+                            break;
                         }
                         break;
                     default:
-                        GlobalValues_1.globalValues.Logger.warning(`\nDefault spawn: ${cachedOfType[cachedOfType.length - 1].Info.Settings.Role}`);
+                        GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.warning(`\nDefault spawn: ${key} ${cachedBot.Info.Settings.Role} ${cachedBot.Info.Side}`);
                         break;
                 }
                 return cachedOfType.pop();
@@ -85,5 +121,11 @@ BotGen.usecTypes = [
     "sptusecnormal",
     "sptusechard",
     "sptusecimpossible"
+];
+BotGen.marksmanTypes = [
+    "marksmaneasy",
+    "marksmannormal",
+    "marksmanhard",
+    "marksmanimpossible"
 ];
 exports.default = BotGen;

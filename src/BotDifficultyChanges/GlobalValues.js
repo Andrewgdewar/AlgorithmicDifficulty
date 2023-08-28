@@ -1,9 +1,19 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.globalValues = void 0;
+const config_json_1 = __importDefault(require("../../config/config.json"));
+const difficulty_json_1 = __importDefault(require("../../config/difficulty.json"));
 class globalValues {
 }
 exports.globalValues = globalValues;
+globalValues.config = config_json_1.default;
+globalValues.difficultyConfig = difficulty_json_1.default;
+globalValues.scavAlternates = [...difficulty_json_1.default.bots.midLevelAIs, ...difficulty_json_1.default.bots.highLevelAIs];
+globalValues.pmcAlternates = [...difficulty_json_1.default.bots.highLevelAIs, ...difficulty_json_1.default.bots.bossLevelAIs];
+globalValues.marksmanAlternates = ["followergluharsnipe", "followerbirdeye", "bosskojaniy"];
 globalValues.assaultRoleList = [
     {
         Role: "assault",
@@ -52,7 +62,7 @@ globalValues.bearRoleList = [
         BotDifficulty: "hard"
     },
     {
-        Role: "bear",
+        Role: "sptbear",
         BotDifficulty: "easy"
     },
     {
@@ -60,15 +70,15 @@ globalValues.bearRoleList = [
         BotDifficulty: "impossible"
     },
     {
-        Role: "bear",
+        Role: "sptbear",
         BotDifficulty: "normal"
     },
     {
-        Role: "bear",
+        Role: "sptbear",
         BotDifficulty: "hard"
     },
     {
-        Role: "bear",
+        Role: "sptbear",
         BotDifficulty: "impossible"
     }
 ];
@@ -86,7 +96,7 @@ globalValues.usecRoleList = [
         BotDifficulty: "hard"
     },
     {
-        Role: "usec",
+        Role: "sptusec",
         BotDifficulty: "easy"
     },
     {
@@ -94,15 +104,15 @@ globalValues.usecRoleList = [
         BotDifficulty: "impossible"
     },
     {
-        Role: "usec",
+        Role: "sptusec",
         BotDifficulty: "normal"
     },
     {
-        Role: "usec",
+        Role: "sptusec",
         BotDifficulty: "hard"
     },
     {
-        Role: "usec",
+        Role: "sptusec",
         BotDifficulty: "impossible"
     }
 ];
@@ -130,8 +140,8 @@ globalValues.roleCase = {
     "followersanitar": "followerSanitar",
     "followertagilla": "followerTagilla",
     "cursedassault": "cursedAssault",
-    "usec": "usec",
-    "bear": "bear",
+    "usec": "sptusec",
+    "bear": "sptbear",
     "bosstest": "bossTest",
     "followertest": "followerTest",
     "gifter": "gifter",

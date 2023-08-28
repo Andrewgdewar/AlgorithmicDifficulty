@@ -1,10 +1,10 @@
 {
     "bots": {
         "lowLevelAIs": [
-            "assault",
-            "marksman"
+            "assault"
         ],
         "midLevelAIs": [
+            "marksman",
             "cursedassault",
             "sectantpriest",
             "sectantwarrior",
@@ -39,10 +39,11 @@
         ]
     },
     "DO NOT TOUCH THE ABOVE, THIS IS NOT POOP": "NO SUPPORT WILL BE GIVEN",
-    "overallDifficultyModifier": 1,
     "lowLevelDifficultyModifier": 0,
     "midLevelDifficultyModifier": 0,
     "highLevelDifficultyModifier": 0,
+    "botGroupDistance": 150,
+    "pmcDifficultyMaxLevel": 60,
     "overallDifficultyMultipliers": {
         "aiAimSpeedMult": 1.2,
         "aiShotSpreadMult": 1,
@@ -65,9 +66,5 @@
             "botnameshere",
             "seperatethemwithcommas"
         ]
-    },
-    "randomScavBrainChance": 0.2,
-    "groupDistance": 150,
-    "levelMax": 60,
-    "debug": true
+    }
 }
