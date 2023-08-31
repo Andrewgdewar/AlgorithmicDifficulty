@@ -18,7 +18,6 @@ const makeDifficultyChanges = () => {
             "hard",
             "impossible"
         ];
-        console.log(JSON.stringify(GlobalValues_1.globalValues.database.bots.types.usec.difficulty["normal"].Mind.CAN_TALK));
         botDifficulty.forEach(difficulty => {
             GlobalValues_1.globalValues.database.bots.types.bear.difficulty[difficulty].Mind.CAN_TALK = false;
             GlobalValues_1.globalValues.database.bots.types.bear.difficulty[difficulty].Mind.CAN_THROW_REQUESTS = false;
@@ -40,19 +39,19 @@ const generateDifficultyLevels = () => {
     for (let aiTypes in bots) {
         switch (aiTypes) {
             case "lowLevelAIs":
-                difficultySet = [3, 3.33, 3.66, 4];
+                difficultySet = [3.6, 3.8, 4, 4.2];
                 difficultyModifier = lowLevelDifficultyModifier;
                 break;
             case "midLevelAIs":
-                difficultySet = [3.66, 4, 4.33, 4.66];
+                difficultySet = [4, 4.2, 4.4, 4.6];
                 difficultyModifier = midLevelDifficultyModifier;
                 break;
             case "highLevelAIs":
-                difficultySet = [4.33, 4.66, 5, 5.33];
+                difficultySet = [4.4, 4.6, 4.8, 5];
                 difficultyModifier = highLevelDifficultyModifier;
                 break;
             case "bossLevelAIs":
-                difficultySet = [5, 5.5, 6, 6.5];
+                difficultySet = [4.8, 5, 5.2, 5.4];
                 difficultyModifier = Math.max(lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier);
                 break;
             default:

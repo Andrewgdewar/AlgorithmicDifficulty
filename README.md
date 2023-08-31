@@ -1,5 +1,5 @@
 
-# **Dushaoan's AlgorithmicDifficulty**
+# **DewardianDev's AlgorithmicDifficulty**
 
 === INSTALL STEPS ===
 
@@ -17,8 +17,8 @@ Example order.json with recommended mods:
 "ServerValueModifier",
 "zPOOP",
 "Lua-CustomSpawnPoints",
-"Dushaoan-XXXX-1.x.x",
-"Dushaoan-AlgorithmicDifficulty-1.x.x"
+"DewardianDev-XXXX-1.x.x",
+"DewardianDev-AlgorithmicDifficulty-1.x.x"
 ]
 }
 
@@ -33,10 +33,13 @@ Example order.json with recommended mods:
     "overallDifficultyModifier": 1,
 
     //Chance a scav will spawn with an alternate (mid level) brain type.
-    "randomScavBrainChance": 0.2,
+    "randomScavBrainChance": 0.1,
 
     //Chance a pmc will spawn with an alternate (mid/high level) brain type.
-    "randomPmcBrainChance": 0.2,
+    "randomPmcBrainChance": 0.1,
+
+    //Chance a marksman will spawn switch to a harder brain type.
+    "randomMarksmanBrainChance": 0.1,
 
     "debug": true
 }

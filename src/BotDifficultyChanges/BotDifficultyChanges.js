@@ -31,7 +31,7 @@ const BotRoutersAndGen = (container) => {
             url: "/client/raid/configuration",
             action: (url, info, sessionId, output) => {
                 GlobalValues_1.globalValues.RaidStartTime = Date.now();
-                GlobalValues_1.globalValues.RaidMap = info.location;
+                GlobalValues_1.globalValues.RaidMap = info.location.toLowerCase();
                 GlobalValues_1.globalValues.config.debug && GlobalValues_1.globalValues.Logger.info(`globalValues.RaidStartTime updated to: ${GlobalValues_1.globalValues.RaidStartTime} ${GlobalValues_1.globalValues.RaidMap}`);
                 return output;
             }

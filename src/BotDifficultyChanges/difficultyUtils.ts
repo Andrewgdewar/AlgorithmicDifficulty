@@ -46,16 +46,16 @@ const generateDifficultyLevels = () => {
 
         switch (aiTypes) {
             case "lowLevelAIs":
-                difficultySet = [3, 3.33, 3.66, 4]; difficultyModifier = lowLevelDifficultyModifier
+                difficultySet = [3.6, 3.8, 4, 4.2]; difficultyModifier = lowLevelDifficultyModifier
                 break;
             case "midLevelAIs":
-                difficultySet = [3.66, 4, 4.33, 4.66]; difficultyModifier = midLevelDifficultyModifier
+                difficultySet = [4, 4.2, 4.4, 4.6]; difficultyModifier = midLevelDifficultyModifier
                 break;
             case "highLevelAIs":
-                difficultySet = [4.33, 4.66, 5, 5.33]; difficultyModifier = highLevelDifficultyModifier
+                difficultySet = [4.4, 4.6, 4.8, 5]; difficultyModifier = highLevelDifficultyModifier
                 break;
             case "bossLevelAIs":
-                difficultySet = [5, 5.5, 6, 6.5]; difficultyModifier = Math.max(lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier)
+                difficultySet = [4.8, 5, 5.2, 5.4]; difficultyModifier = Math.max(lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier)
                 break;
             default:
                 console.log(`${aiTypes} is being overwritten for some reason?`) //Should never appear if things are working properly.

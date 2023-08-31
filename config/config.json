@@ -5,5 +5,5 @@
     "randomScavBrainChance": 0.1,
     "randomPmcBrainChance": 0.1,
     "randomMarksmanBrainChance": 0.1,
-    "debug": false
+    "debug": true
 }
