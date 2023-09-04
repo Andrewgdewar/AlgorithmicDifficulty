@@ -262,7 +262,7 @@ const changeAI = (botDiff, difficulty) => {
     // changeStat("MAX_AIMING_UPGRADE_BY_TIME", [1.2,1.1,1,0.9,0.8,0.7], difficulty, botCat)
     (0, exports.changeStat)("MAX_AIMING_UPGRADE_BY_TIME", [1.5, 1.5, 1.35, 1.15, 1, 0.85, 0.7], difficulty, botCat);
     botCat.MAX_AIMING_UPGRADE_BY_TIME *= 2;
-    //changeStat("DAMAGE_TO_DISCARD_AIM_0_100", [30,40,50,60,70,86,86], difficulty, botCat)
+    // changeStat("DAMAGE_TO_DISCARD_AIM_0_100", [30,40,50,60,70,86,86], difficulty, botCat)
     botCat.DAMAGE_TO_DISCARD_AIM_0_100 = 28;
     botCat.SCATTERING_HAVE_DAMAGE_COEF = 1.3;
     //botCat.SHOOT_TO_CHANGE_PRIORITY = 55250
@@ -451,7 +451,7 @@ const changeAI = (botDiff, difficulty) => {
     botCat = botDiff.Grenade;
     //GRENADE
     //INVESTIGATE. Is this shouting for when they throw grenades, or when they sense you throwing them?
-    botCat.CHANCE_TO_NOTIFY_ENEMY_GR_100 = 100.0;
+    botCat.CHANCE_TO_NOTIFY_ENEMY_GR_100 = 80.0;
     botCat.AMBUSH_IF_SMOKE_IN_ZONE_100 = 5;
     botCat.SMOKE_SUPPRESS_DELTA = 25;
     //Play with these sometime

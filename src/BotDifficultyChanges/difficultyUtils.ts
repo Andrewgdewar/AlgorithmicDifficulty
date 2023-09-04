@@ -1,3 +1,4 @@
+import { ILocation } from './../../types/models/eft/common/ILocation.d';
 import { cloneDeep } from '../utils';
 import { globalValues } from './GlobalValues';
 import { Difficulties, Difficulty } from "@spt-aki/models/eft/common/tables/IBotType";
@@ -38,7 +39,7 @@ export const makeDifficultyChanges = () => {
 }
 
 const generateDifficultyLevels = () => {
-    const { bots, lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier } = globalValues.difficultyConfig
+    const { bots, lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier, bossLevelDifficultyModifier } = globalValues.difficultyConfig
 
     let difficultySet;
     let difficultyModifier;
@@ -55,7 +56,7 @@ const generateDifficultyLevels = () => {
                 difficultySet = [4.4, 4.6, 4.8, 5]; difficultyModifier = highLevelDifficultyModifier
                 break;
             case "bossLevelAIs":
-                difficultySet = [4.8, 5, 5.2, 5.4]; difficultyModifier = Math.max(lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier)
+                difficultySet = [4.8, 5, 5.2, 5.4]; difficultyModifier = bossLevelDifficultyModifier
                 break;
             default:
                 console.log(`${aiTypes} is being overwritten for some reason?`) //Should never appear if things are working properly.
@@ -87,7 +88,7 @@ export const changeOverallMapDifficulty = () => {
     const accuracyCoef = 1, scatteringCoef = 1, gainSightCoef = 0.5, marksmanCoef = 1, visibleDistCoef = 1
     for (let mapName in locations) {
         if (mapName != "base") {
-            let map = locations[mapName]
+            let map = locations[mapName] as ILocation
 
             //Maybe round this afterwards. Might cause problems if it's not rounded?
             map.base.BotLocationModifier.AccuracySpeed = 1 / Math.sqrt(accuracyCoef)
@@ -283,7 +284,7 @@ export const changeAI = (botDiff: Difficulty, difficulty: number) => {
     // changeStat("MAX_AIMING_UPGRADE_BY_TIME", [1.2,1.1,1,0.9,0.8,0.7], difficulty, botCat)
     changeStat("MAX_AIMING_UPGRADE_BY_TIME", [1.5, 1.5, 1.35, 1.15, 1, 0.85, 0.7], difficulty, botCat)
     botCat.MAX_AIMING_UPGRADE_BY_TIME *= 2
-    //changeStat("DAMAGE_TO_DISCARD_AIM_0_100", [30,40,50,60,70,86,86], difficulty, botCat)
+    // changeStat("DAMAGE_TO_DISCARD_AIM_0_100", [30,40,50,60,70,86,86], difficulty, botCat)
     botCat.DAMAGE_TO_DISCARD_AIM_0_100 = 28
     botCat.SCATTERING_HAVE_DAMAGE_COEF = 1.3
     //botCat.SHOOT_TO_CHANGE_PRIORITY = 55250
@@ -487,7 +488,7 @@ export const changeAI = (botDiff: Difficulty, difficulty: number) => {
     botCat = botDiff.Grenade;
     //GRENADE
     //INVESTIGATE. Is this shouting for when they throw grenades, or when they sense you throwing them?
-    botCat.CHANCE_TO_NOTIFY_ENEMY_GR_100 = 100.0;
+    botCat.CHANCE_TO_NOTIFY_ENEMY_GR_100 = 70.0;
     botCat.AMBUSH_IF_SMOKE_IN_ZONE_100 = 5;
     botCat.SMOKE_SUPPRESS_DELTA = 25;
 

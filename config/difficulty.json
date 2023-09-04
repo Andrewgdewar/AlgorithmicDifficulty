@@ -42,14 +42,14 @@
     "lowLevelDifficultyModifier": 0,
     "midLevelDifficultyModifier": 0,
     "highLevelDifficultyModifier": 0,
-    "botGroupDistance": 150,
-    "pmcDifficultyMaxLevel": 60,
+    "bossLevelDifficultyModifier": 0,
+    "botGroupDistance": 100,
+    "pmcDifficultyMaxLevel": 55,
     "overallDifficultyMultipliers": {
         "aiAimSpeedMult": 1.2,
         "aiShotSpreadMult": 1,
-        "aiVisionSpeedMult": 1.3,
+        "aiVisionSpeedMult": 1,
         "aiAccuracyMult": 1.3,
-        "sniperBotAccuracyMult": 1,
         "visibleDistanceMult": 0.8,
         "semiAutoFireRateMult": 1,
         "aiRecoilMult": 1.1,
@@ -60,11 +60,6 @@
         "grenadeThrowRangeMax": 20,
         "grenadeThrowRangeMult": 1,
         "allowAimAtHead": false,
-        "allowGrenades": true,
-        "changeHeadHPValues": false,
-        "setTheseBotsToDefaultPlayerHPBeforeMultsAreUsed": [
-            "botnameshere",
-            "seperatethemwithcommas"
-        ]
+        "allowGrenades": true
     }
 }

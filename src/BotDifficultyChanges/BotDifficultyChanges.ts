@@ -39,7 +39,7 @@ export const BotRoutersAndGen = (
         action: (url, info, sessionId, output) => {
             globalValues.RaidStartTime = Date.now()
             globalValues.RaidMap = info.location.toLowerCase()
-            globalValues.config.debug && globalValues.Logger.info(`globalValues.RaidStartTime updated to: ${globalValues.RaidStartTime} ${globalValues.RaidMap}`)
+            globalValues.config.debug && globalValues.Logger.info(`Algorthimic Difficulty: RaidStartTime updated to: ${globalValues.RaidStartTime} ${globalValues.RaidMap}`)
             return output
         }
     }], "aki");

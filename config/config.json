@@ -1,9 +1,9 @@
 {
     "enable": true,
     "preventPMCChatter": true,
-    "overallDifficultyModifier": 0.5,
+    "overallDifficultyModifier": 1,
     "randomScavBrainChance": 0.1,
-    "randomPmcBrainChance": 0.1,
-    "randomMarksmanBrainChance": 0.1,
-    "debug": true
+    "randomPmcBrainChance": 0,
+    "randomMarksmanBrainChance": 0.2,
+    "debug": false
 }

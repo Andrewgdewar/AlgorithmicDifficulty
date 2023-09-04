@@ -63,6 +63,7 @@ export default class BotGen {
                             const botsForRandom = globalValues.scavAlternates
                             const randomChoice = botsForRandom[Math.floor(Math.random() * botsForRandom.length)];
                             cachedBot.Info.Settings.Role = globalValues.roleCase[randomChoice]
+                            cachedBot.Info.Side = "Savage";
                             globalValues.config.debug && globalValues.Logger.warning(`\nRANDOM: Creating Scav from ${key} with ${randomChoice} ${cachedBot.Info.Side}`);
                             break;
                         }
