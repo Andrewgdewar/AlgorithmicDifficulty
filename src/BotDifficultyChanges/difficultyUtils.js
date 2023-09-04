@@ -33,7 +33,7 @@ const makeDifficultyChanges = () => {
 };
 exports.makeDifficultyChanges = makeDifficultyChanges;
 const generateDifficultyLevels = () => {
-    const { bots, lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier } = GlobalValues_1.globalValues.difficultyConfig;
+    const { bots, lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier, bossLevelDifficultyModifier } = GlobalValues_1.globalValues.difficultyConfig;
     let difficultySet;
     let difficultyModifier;
     for (let aiTypes in bots) {
@@ -52,7 +52,7 @@ const generateDifficultyLevels = () => {
                 break;
             case "bossLevelAIs":
                 difficultySet = [4.8, 5, 5.2, 5.4];
-                difficultyModifier = Math.max(lowLevelDifficultyModifier, midLevelDifficultyModifier, highLevelDifficultyModifier);
+                difficultyModifier = bossLevelDifficultyModifier;
                 break;
             default:
                 console.log(`${aiTypes} is being overwritten for some reason?`); //Should never appear if things are working properly.
@@ -451,7 +451,7 @@ const changeAI = (botDiff, difficulty) => {
     botCat = botDiff.Grenade;
     //GRENADE
     //INVESTIGATE. Is this shouting for when they throw grenades, or when they sense you throwing them?
-    botCat.CHANCE_TO_NOTIFY_ENEMY_GR_100 = 80.0;
+    botCat.CHANCE_TO_NOTIFY_ENEMY_GR_100 = 70.0;
     botCat.AMBUSH_IF_SMOKE_IN_ZONE_100 = 5;
     botCat.SMOKE_SUPPRESS_DELTA = 25;
     //Play with these sometime
