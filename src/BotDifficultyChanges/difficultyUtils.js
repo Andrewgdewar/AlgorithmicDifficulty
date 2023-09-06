@@ -75,7 +75,7 @@ const changeForAllDifficulties = (currentBottDifficulty, difficultySet, difficul
 };
 const changeOverallMapDifficulty = () => {
     const locations = GlobalValues_1.globalValues.database.locations;
-    const accuracyCoef = 1, scatteringCoef = 1, gainSightCoef = 0.5, marksmanCoef = 1, visibleDistCoef = 1;
+    const accuracyCoef = 1, scatteringCoef = 1, gainSightCoef = 0.5, marksmanCoef = GlobalValues_1.globalValues.difficultyConfig.overallDifficultyMultipliers.sniperBotAccuracyMult, visibleDistCoef = 1;
     for (let mapName in locations) {
         if (mapName != "base") {
             let map = locations[mapName];
@@ -639,7 +639,7 @@ const changeAI = (botDiff, difficulty) => {
     //Not sure though.
     // changeStat("HearingSense", [1.5,2.0,2.5,3.9,4.5,5.2], difficulty, botCat)
     (0, exports.changeStat)("HearingSense", [0.1, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.92, 0.94, 0.96, 0.98, 0.98], difficulty, botCat);
-    botCat.HearingSense *= 1;
+    botCat.HearingSense *= GlobalValues_1.globalValues.difficultyConfig.overallDifficultyMultipliers.aiHearingMult;
     //Check config entry for this one
     botCat.CanGrenade = GlobalValues_1.globalValues.difficultyConfig.overallDifficultyMultipliers.allowGrenades;
     //Are there other aiming types? Other bots all seem to use 'normal'.
@@ -649,7 +649,6 @@ const changeAI = (botDiff, difficulty) => {
     botCat.AccuratySpeed *= 2;
     botCat.WaitInCoverBetweenShotsSec = 0.2;
     //Using multipliers from config
-    // botCat.HearingSense = botCat.HearingSense * config.overallDifficultyMultipliers.aiHearingMult
     // botCat.AccuratySpeed *= Math.sqrt(config.overallDifficultyMultipliers.aiAimSpeedMult)
     botCat.VisibleDistance *= Math.sqrt(GlobalValues_1.globalValues.difficultyConfig.overallDifficultyMultipliers.visibleDistanceMult);
     botCat.ScatteringPerMeter *= GlobalValues_1.globalValues.difficultyConfig.overallDifficultyMultipliers.aiShotSpreadMult;

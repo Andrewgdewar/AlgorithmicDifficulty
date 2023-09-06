@@ -60,7 +60,7 @@
         "grenadePrecisionMult": 1,
         "grenadeThrowRangeMax": 20,
         "grenadeThrowRangeMult": 1,
-        "allowAimAtHead": false,
+        "allowAimAtHead": true,
         "allowGrenades": true
     }
 }
